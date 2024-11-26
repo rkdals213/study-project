@@ -1,0 +1,13 @@
+spring:
+  config:
+    import:
+      - application-jpa.yml
+      - application-exposed.yml
+  exposed:
+    show-sql: true
+    generate-ddl: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    Exposed: debug

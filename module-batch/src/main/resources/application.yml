@@ -1,0 +1,16 @@
+spring:
+  config:
+    import:
+      - application-jpa.yml
+      - application-exposed.yml
+  batch:
+    job:
+      name: ${job.name:NONE}
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+#    org.hibernate.type: trace

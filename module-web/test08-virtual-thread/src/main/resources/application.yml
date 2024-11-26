@@ -1,0 +1,7 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+  threads:
+    virtual:
+      enabled: true
