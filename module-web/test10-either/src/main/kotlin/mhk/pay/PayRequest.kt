@@ -1,4 +1,4 @@
-package mhk
+package mhk.pay
 
 import java.math.BigDecimal
 

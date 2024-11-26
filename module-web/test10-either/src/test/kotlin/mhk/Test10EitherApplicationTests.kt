@@ -3,6 +3,10 @@ package mhk
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeSameInstanceAs
+import mhk.pay.PayRequest
+import mhk.pay.PayService
+import mhk.pay.PayStatus
+import mhk.pay.next
 import java.math.BigDecimal
 
 fun handleFailure(throwable: Throwable): String {

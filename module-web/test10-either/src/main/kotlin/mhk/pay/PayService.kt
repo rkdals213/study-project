@@ -1,4 +1,4 @@
-package mhk
+package mhk.pay
 
 import arrow.core.Either
 import java.math.BigDecimal
