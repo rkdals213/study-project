@@ -1,8 +1,13 @@
 package mhk
 
+import arrow.core.Either
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeSameInstanceAs
+import mhk.flow.FlowFailureStatus
+import mhk.flow.FlowService
+import mhk.flow.FlowSuccessStatus
+import mhk.flow.nextFlow
 import mhk.pay.PayRequest
 import mhk.pay.PayService
 import mhk.pay.PayStatus
@@ -53,6 +58,25 @@ class Test10EitherApplicationTests : FunSpec({
                 )
 
             payResponse shouldBe "입금 금액은 0보다 커야함"
+        }
+    }
+
+    context("flow 테스트") {
+        val flowService = FlowService()
+
+        test("flow 진행") {
+            flowService.flow01(3)
+                .nextFlow<FlowSuccessStatus.Flow01Success, FlowSuccessStatus.Flow02Success> {
+                    flowService.flow02(it) as Either<FlowSuccessStatus.Flow01Success, FlowSuccessStatus.Flow02Success>
+                }.nextFlow<FlowSuccessStatus.Flow02Success, FlowSuccessStatus.Flow03Success> {
+                    flowService.flow03(it) as Either<FlowSuccessStatus.Flow02Success, FlowSuccessStatus.Flow03Success>
+                }.fold(
+                    ifLeft = {
+                        println("LEFT : $it")
+                    },
+                    ifRight = {
+                        println("RIGHT : $it")
+                    })
         }
     }
 })
