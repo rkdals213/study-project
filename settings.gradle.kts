@@ -39,6 +39,9 @@ findProject(":module-web:test09-exposed")?.name = "test09-exposed"
 include("module-web:test10-either")
 findProject(":module-web:test10-either")?.name = "test10-either"
 
+include("module-web:test11-kafka-consumer")
+findProject(":module-web:test11-kafka-consumer")?.name = "test11-kafka-consumer"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"
