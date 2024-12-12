@@ -89,7 +89,7 @@ class Batch07(
     }
 
     companion object {
-        private const val CHUNK_SIZE = 1000000
+        private const val CHUNK_SIZE = 100000
         private const val GROUP_BY_SQL = """
             SELECT d.dept_no, d.dept_name, SUM(b.salary) as total_salary, COUNT(a.emp_no) as employee_count
 FROM employees a
