@@ -45,6 +45,9 @@ findProject(":module-web:test11-kafka-consumer")?.name = "test11-kafka-consumer"
 include("module-web:test12-redis-jwt")
 findProject(":module-web:test12-redis-jwt")?.name = "test12-redis-jwt"
 
+include("module-web:test13-outbox-pattern")
+findProject(":module-web:test13-outbox-pattern")?.name = "test13-outbox-pattern"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"
