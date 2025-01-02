@@ -48,6 +48,12 @@ findProject(":module-web:test12-redis-jwt")?.name = "test12-redis-jwt"
 include("module-web:test13-outbox-pattern")
 findProject(":module-web:test13-outbox-pattern")?.name = "test13-outbox-pattern"
 
+include("module-web:test14-reservation")
+findProject(":module-web:test14-reservation")?.name = "test14-reservation"
+
+include("module-web:test15-redis-list")
+findProject(":module-web:test15-redis-list")?.name = "test15-redis-list"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"

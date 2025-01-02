@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+    import:
+      - application-jpa-test.yml
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug

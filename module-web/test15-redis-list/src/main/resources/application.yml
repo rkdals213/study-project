@@ -1,0 +1,11 @@
+spring:
+  config:
+    import:
+      - application-jpa.yml
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
