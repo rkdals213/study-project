@@ -1,0 +1,12 @@
+spring:
+  config:
+    import:
+      - application-jpa.yml
+      - application-exposed.yml
+  batch:
+    job:
+      name: ${job.name:NONE}
+logging:
+  level:
+    org.hibernate.SQL: debug
+#    org.hibernate.type: trace

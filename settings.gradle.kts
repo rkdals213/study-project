@@ -6,6 +6,21 @@ rootProject.name = "study-project"
 
 
 include("module-batch")
+include("module-batch:test01-basic")
+findProject(":module-batch:test01-basic")?.name = "test01-basic"
+
+
+include("module-batch:test02-paging")
+findProject(":module-batch:test02-paging")?.name = "test02-paging"
+
+include("module-batch:test03-exposed")
+findProject(":module-batch:test03-exposed")?.name = "test03-exposed"
+
+include("module-batch:test04-kafka")
+findProject(":module-batch:test04-kafka")?.name = "test04-kafka"
+
+include("module-batch:test05-redis")
+findProject(":module-batch:test05-redis")?.name = "test05-redis"
 
 include("module-web")
 

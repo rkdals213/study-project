@@ -1,16 +1,5 @@
-plugins {
-    id("org.springframework.boot")
-}
-
 dependencies {
-    api(project(":module-database"))
-
-    implementation("org.springframework.boot:spring-boot-starter-batch")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
-    testImplementation("org.springframework.batch:spring-batch-test")
-    implementation("org.springframework.kafka:spring-kafka")
-}
-
-allOpen {
-    annotation("com.example.common.JobParameter")
+    api(project(":module-batch:test01-basic"))
+    api(project(":module-batch:test02-paging"))
+    api(project(":module-batch:test03-exposed"))
 }
