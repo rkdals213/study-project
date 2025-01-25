@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    write:
+      jdbc-url: jdbc:mysql://localhost:3306/kotlin_study?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 1234
+    read:
+      jdbc-url: jdbc:mysql://localhost:3307/kotlin_study?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 1234
+  batch:
+    job:
+      name: ${job.name:NONE}
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 1000
+#        hibernate:
+#          ddl-auto: create
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+#    org.hibernate.type: trace

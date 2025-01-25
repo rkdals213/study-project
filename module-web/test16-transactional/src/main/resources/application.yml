@@ -1,0 +1,9 @@
+spring:
+  config:
+    import:
+      - application-jpa.yml
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    Exposed: debug

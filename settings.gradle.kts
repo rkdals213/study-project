@@ -22,6 +22,9 @@ findProject(":module-batch:test04-kafka")?.name = "test04-kafka"
 include("module-batch:test05-redis")
 findProject(":module-batch:test05-redis")?.name = "test05-redis"
 
+include("module-batch:test06-datasource")
+findProject(":module-batch:test06-datasource")?.name = "test06-datasource"
+
 include("module-web")
 
 include("module-web:test01-api-response")
@@ -68,6 +71,9 @@ findProject(":module-web:test14-reservation")?.name = "test14-reservation"
 
 include("module-web:test15-redis-list")
 findProject(":module-web:test15-redis-list")?.name = "test15-redis-list"
+
+include("module-web:test16-transactional")
+findProject(":module-web:test16-transactional")?.name = "test16-transactional"
 
 include("module-database")
 include("module-database:jpa")
