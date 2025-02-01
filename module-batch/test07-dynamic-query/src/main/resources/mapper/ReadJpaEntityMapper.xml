@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mhk.batch04.ReadJpaEntityMapper">
+
+    <select id="selectPagedData" resultType="mhk.entity.ReadJpaEntity">
+        SELECT id, name, address, birthday
+        FROM kotlin_study.batch_study_data_entity
+        WHERE 1 = 1
+        <if test="birthday != null">
+            AND birthday > #{birthday}
+        </if>
+        LIMIT #{_skiprows}, #{_pagesize}
+    </select>
+
+</mapper>

@@ -12,11 +12,11 @@ import javax.sql.DataSource
 class DataSourceConfig {
 
     @Primary
-    @Bean(name = ["writeDataSource"])
+    @Bean
     @ConfigurationProperties(prefix = "spring.datasource.write")
     fun writeDataSource(): DataSource = DataSourceBuilder.create().build()
 
-    @Bean(name = ["readDataSource"])
+    @Bean
     @ConfigurationProperties(prefix = "spring.datasource.read")
     fun readDataSource(): DataSource = DataSourceBuilder.create().build()
 }

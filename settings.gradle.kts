@@ -25,6 +25,9 @@ findProject(":module-batch:test05-redis")?.name = "test05-redis"
 include("module-batch:test06-datasource")
 findProject(":module-batch:test06-datasource")?.name = "test06-datasource"
 
+include("module-batch:test07-dynamic-query")
+findProject(":module-batch:test07-dynamic-query")?.name = "test07-dynamic-query"
+
 include("module-web")
 
 include("module-web:test01-api-response")

@@ -18,7 +18,7 @@ import javax.sql.DataSource
 )
 class JpaEntityManagerConfig {
 
-    @Bean(name = ["writerEntityManagerFactory"])
+    @Bean
     fun writerEntityManagerFactory(
         @Qualifier("writeDataSource") dataSource: DataSource,
         builder: EntityManagerFactoryBuilder
@@ -31,7 +31,7 @@ class JpaEntityManagerConfig {
     }
 
     @Primary
-    @Bean(name = ["writerTransactionManager"])
+    @Bean
     fun writerTransactionManager(
         @Qualifier("writerEntityManagerFactory") entityManagerFactory: EntityManagerFactory
     ): PlatformTransactionManager {
@@ -39,7 +39,7 @@ class JpaEntityManagerConfig {
     }
 
 
-    @Bean(name = ["readerEntityManagerFactory"])
+    @Bean
     fun readerEntityManagerFactory(
         @Qualifier("readDataSource") dataSource: DataSource,
         builder: EntityManagerFactoryBuilder
@@ -51,7 +51,7 @@ class JpaEntityManagerConfig {
             .build()
     }
 
-    @Bean(name = ["readerTransactionManager"])
+    @Bean
     fun readerTransactionManager(
         @Qualifier("readerEntityManagerFactory") entityManagerFactory: EntityManagerFactory
     ): PlatformTransactionManager {

@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-batch")
-	api("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	testImplementation("org.springframework.batch:spring-batch-test")
 	runtimeOnly("com.mysql:mysql-connector-j")
 }

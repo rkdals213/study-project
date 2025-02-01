@@ -1,6 +1,7 @@
 package mhk.batch01
 
 import jakarta.persistence.EntityManagerFactory
+import mhk.entity.ReadJpaEntity
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.JobScope
@@ -8,23 +9,19 @@ import org.springframework.batch.core.configuration.annotation.StepScope
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.builder.StepBuilder
-import org.springframework.batch.item.ItemProcessor
-import org.springframework.batch.item.database.JpaItemWriter
+import org.springframework.batch.item.ItemWriter
 import org.springframework.batch.item.database.JpaPagingItemReader
-import org.springframework.batch.item.database.builder.JpaItemWriterBuilder
 import org.springframework.batch.item.database.builder.JpaPagingItemReaderBuilder
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.transaction.PlatformTransactionManager
+import java.time.LocalDate
 
 @Configuration
 class Batch01(
     private val jobRepository: JobRepository,
     private val transactionManager: PlatformTransactionManager,
-    @Qualifier("readerEntityManagerFactory") private val readEntityManagerFactory: EntityManagerFactory,
-    @Qualifier("writerEntityManagerFactory") private val writeEntityManagerFactory: EntityManagerFactory
-
+    private val entityManagerFactory: EntityManagerFactory
 ) {
     @Bean
     fun batch01Job(): Job {
@@ -37,44 +34,44 @@ class Batch01(
     @JobScope
     fun batch01Step(): Step {
         return StepBuilder("batch01Step", jobRepository)
-            .chunk<ReadOnlyEntity, WriteEntity>(CHUNK_SIZE, transactionManager)
-            .reader(batch01Reader())
-            .processor(batch01Processor())
+            .chunk<ReadJpaEntity, ReadJpaEntity>(CHUNK_SIZE, transactionManager)
+            .reader(batch01JpaPagingReader())
             .writer(batch01Writer())
             .build()
     }
 
     @Bean
-    @StepScope
-    fun batch01Reader(): JpaPagingItemReader<ReadOnlyEntity> {
-        return JpaPagingItemReaderBuilder<ReadOnlyEntity>()
+    fun batch01JpaPagingReader(): JpaPagingItemReader<ReadJpaEntity> {
+        val birthday: LocalDate? = LocalDate.of(2010, 1, 1)
+
+        var sql = "SELECT b FROM batch_study_data_entity b WHERE 1=1 "
+        val parameters = mutableMapOf<String, Any>()
+
+        birthday?.let {
+            parameters["birthday"] = birthday
+            sql += "AND b.birthday > :birthday "
+        }
+
+        return JpaPagingItemReaderBuilder<ReadJpaEntity>()
             .name("batch01JpaPagingReader")
             .pageSize(CHUNK_SIZE)
-            .entityManagerFactory(readEntityManagerFactory)
-            .queryString("SELECT a FROM ReadOnlyEntity a")
+            .entityManagerFactory(entityManagerFactory)
+            .queryString(sql)
+            .parameterValues(parameters)
             .build()
     }
 
     @Bean
     @StepScope
-    fun batch01Processor(): ItemProcessor<ReadOnlyEntity, WriteEntity> {
-        return ItemProcessor {
-            WriteEntity(
-                id = 0,
-                data = it.data
-            )
+    fun batch01Writer(): ItemWriter<ReadJpaEntity> {
+        return ItemWriter {
+            for (readJpaEntity in it) {
+                println(readJpaEntity)
+            }
         }
     }
 
-    @Bean
-    @StepScope
-    fun batch01Writer(): JpaItemWriter<WriteEntity> {
-        return JpaItemWriterBuilder<WriteEntity>()
-            .entityManagerFactory(writeEntityManagerFactory)
-            .build()
-    }
-
     companion object {
-        private const val CHUNK_SIZE = 10
+        private const val CHUNK_SIZE = 10000
     }
 }

@@ -21,7 +21,9 @@ import javax.sql.DataSource
 @Configuration
 class Batch02(
     private val jobRepository: JobRepository,
-    private val transactionManager: PlatformTransactionManager
+    private val transactionManager: PlatformTransactionManager,
+    @Qualifier("readDataSource") private val readDateSource: DataSource,
+    @Qualifier("writeDataSource") private val writeDateSource: DataSource
 ) {
 
     @Bean
@@ -36,21 +38,19 @@ class Batch02(
     fun batch02Step(): Step {
         return StepBuilder("batch02Step", jobRepository)
             .chunk<ReadData, WriteData>(CHUNK_SIZE, transactionManager)
-            .reader(batch02JdbcCursorReader(null))
+            .reader(batch02JdbcCursorReader())
             .processor(batch02Processor())
-            .writer(batch02JdbcWriter(null))
+            .writer(batch02JdbcWriter())
             .build()
     }
 
     @Bean
-    fun batch02JdbcCursorReader(
-        @Qualifier("readDataSource") dataSource: DataSource?,
-    ): JdbcCursorItemReader<ReadData> {
+    fun batch02JdbcCursorReader(): JdbcCursorItemReader<ReadData> {
         return JdbcCursorItemReaderBuilder<ReadData>()
             .name("batch02JdbcCursorReader")
             .rowMapper(DataClassRowMapper(ReadData::class.java))
             .sql("SELECT id, data FROM read_only_entity")
-            .dataSource(dataSource!!)
+            .dataSource(readDateSource)
             .build()
     }
 
@@ -65,11 +65,9 @@ class Batch02(
     }
 
     @Bean // 3초
-    fun batch02JdbcWriter(
-        @Qualifier("writeDataSource") dataSource: DataSource?,
-    ): JdbcBatchItemWriter<WriteData> {
+    fun batch02JdbcWriter(): JdbcBatchItemWriter<WriteData> {
         return JdbcBatchItemWriterBuilder<WriteData>()
-            .dataSource(dataSource!!)
+            .dataSource(writeDateSource)
             .sql("insert into write_entity (data) values (:data)")
             .beanMapped()
             .build()
