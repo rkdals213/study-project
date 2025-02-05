@@ -1,7 +1,9 @@
 spring:
   config:
+    activate:
+      on-profile: test
     import:
-      - application-jpa.yml
+      - application-jpa-test.yml
   threads:
     virtual:
       enabled: true

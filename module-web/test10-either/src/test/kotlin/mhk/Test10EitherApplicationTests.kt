@@ -4,7 +4,6 @@ import arrow.core.Either
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeSameInstanceAs
-import mhk.flow.FlowFailureStatus
 import mhk.flow.FlowService
 import mhk.flow.FlowSuccessStatus
 import mhk.flow.nextFlow
