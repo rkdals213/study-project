@@ -78,6 +78,12 @@ findProject(":module-web:test15-redis-list")?.name = "test15-redis-list"
 include("module-web:test16-transactional")
 findProject(":module-web:test16-transactional")?.name = "test16-transactional"
 
+include("module-web:test17-test-fixtures")
+include("module-web:test17-test-fixtures:module-domain")
+findProject(":module-web:test17-test-fixtures:module-domain")?.name = "test17-module-domain"
+include("module-web:test17-test-fixtures:module-service")
+findProject(":module-web:test17-test-fixtures:module-service")?.name = "test17-module-service"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"
