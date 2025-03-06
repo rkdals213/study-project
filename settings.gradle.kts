@@ -84,6 +84,9 @@ findProject(":module-web:test17-test-fixtures:module-domain")?.name = "test17-mo
 include("module-web:test17-test-fixtures:module-service")
 findProject(":module-web:test17-test-fixtures:module-service")?.name = "test17-module-service"
 
+include("module-web:test18-kotest-di")
+findProject(":module-web:test18-kotest-di")?.name = "test18-kotest-di"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"
