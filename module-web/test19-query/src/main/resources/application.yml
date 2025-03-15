@@ -1,0 +1,11 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+    import:
+      - application-jpa-test.yml
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+#    org.hibernate.type: trace
