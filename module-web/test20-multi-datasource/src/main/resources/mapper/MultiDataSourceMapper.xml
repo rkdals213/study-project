@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mhk.MultiDataSourceEntityMapper">
+    <select id="findById">
+        SELECT id, value
+        FROM kotlin_study.multi_datasource_entity
+        WHERE id = #{id}
+    </select>
+
+    <insert id="save" parameterType="mhk.MultiDataSourceEntity">
+        INSERT INTO kotlin_study.multi_datasource_entity
+        VALUES (#{id}, #{value})
+    </insert>
+</mapper>

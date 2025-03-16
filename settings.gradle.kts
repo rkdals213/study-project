@@ -90,6 +90,9 @@ findProject(":module-web:test18-kotest-di")?.name = "test18-kotest-di"
 include("module-web:test19-query")
 findProject(":module-web:test19-query")?.name = "test19-query"
 
+include("module-web:test20-multi-datasource")
+findProject(":module-web:test20-multi-datasource")?.name = "test20-multi-datasource"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"
