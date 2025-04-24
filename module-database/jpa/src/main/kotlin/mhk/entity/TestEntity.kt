@@ -10,4 +10,8 @@ class TestEntity(
     val id: Long = 0L,
 
     val data: String
-)
+) {
+    override fun toString(): String {
+        return "TestEntity(id=$id, data='$data')"
+    }
+}

@@ -1,0 +1,11 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+    import:
+      - application-jpa.yml
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+#    org.hibernate.type: trace

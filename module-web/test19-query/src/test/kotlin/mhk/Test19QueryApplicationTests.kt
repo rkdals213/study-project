@@ -4,6 +4,7 @@ import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
+import jakarta.persistence.EntityManager
 import mhk.entity.CompositeKeyEntityPK
 import mhk.entity.QCompositeKeyEntity.compositeKeyEntity
 import mhk.entity.QCompositeKeyLineEntity.compositeKeyLineEntity
@@ -17,6 +18,7 @@ import org.springframework.test.context.ActiveProfiles
 class Test19QueryApplicationTests(
     private val query: JPAQueryFactory,
     private val compositeKeyEntityRepository: CompositeKeyEntityRepository,
+    private val entityManager: EntityManager
 ) : FunSpec({
 
     context("query test") {
