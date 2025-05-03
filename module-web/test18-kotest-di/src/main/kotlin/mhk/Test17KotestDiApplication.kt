@@ -15,6 +15,12 @@ fun main(args: Array<String>) {
 class SomeBean {
 
     fun test01(): String {
+        println("do something")
         return "test bean"
+    }
+
+    fun test02(value: String): String {
+        println("do something with $value")
+        return "test bean $value"
     }
 }
