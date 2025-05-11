@@ -96,6 +96,9 @@ findProject(":module-web:test20-multi-datasource")?.name = "test20-multi-datasou
 include("module-web:test21-money")
 findProject(":module-web:test21-money")?.name = "test21-money"
 
+include("module-web:test22-design-pattern")
+findProject(":module-web:test22-design-pattern")?.name = "test22-design-pattern"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"
