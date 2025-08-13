@@ -99,6 +99,12 @@ findProject(":module-web:test21-money")?.name = "test21-money"
 include("module-web:test22-design-pattern")
 findProject(":module-web:test22-design-pattern")?.name = "test22-design-pattern"
 
+include("module-web:test23-mybatis-type")
+findProject(":module-web:test23-mybatis-type")?.name = "test23-mybatis-type"
+
+include("module-web:test25-discount-domain")
+findProject(":module-web:test25-discount-domain")?.name = "test25-discount-domain"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"
