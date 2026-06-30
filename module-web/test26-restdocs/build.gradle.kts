@@ -41,6 +41,8 @@ tasks {
 
     val generateDocumentation by registering(Copy::class) {
         dependsOn(asciidoctor)
+        dependsOn("openapi3")
+        dependsOn("postman")
 
         from(asciidoctor.map { it.outputDir })
         into(layout.projectDirectory.dir("src/main/resources/static/docs"))
@@ -63,5 +65,5 @@ openapi3 {
     title = "My API"
     description = "My API description"
     version = "0.1.0"
-    format = "json" // or json
+    format = "json"
 }
