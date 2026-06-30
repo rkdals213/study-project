@@ -1,0 +1,20 @@
+[[team-create]]
+=== 팀 생성 API
+
+`POST /api`
+
+==== Description
+
+팀 ID와 팀 이름을 전달하여 팀을 생성합니다.
+
+==== Request
+
+include::{snippets}/post-api/request-fields.adoc[]
+
+include::{snippets}/post-api/http-request.adoc[]
+
+==== Response
+
+include::{snippets}/post-api/response-fields.adoc[]
+
+include::{snippets}/post-api/http-response.adoc[]

@@ -1,0 +1,33 @@
+= Test10 API Documentation
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toc-title: API 목록
+:toclevels: 3
+:sectlinks:
+:sectnums:
+:operation-http-request-title: HTTP Request
+:operation-http-response-title: HTTP Response
+
+[[overview]]
+== Overview
+
+Test10 API 문서입니다.
+
+|===
+| 환경 | 값
+
+| Base URL
+| `http://localhost:{port}`
+
+| Content-Type
+| `application/json`
+|===
+
+[[team-api]]
+== Team API
+
+include::get_api.adoc[]
+
+include::post_api.adoc[]

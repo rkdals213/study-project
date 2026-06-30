@@ -1,0 +1,22 @@
+[[team-get]]
+=== 팀 조회 API
+
+`GET /api/{teamId}`
+
+==== Description
+
+팀 ID와 선택적 팀 이름 조건으로 팀 정보를 조회합니다.
+
+==== Request
+
+include::{snippets}/get-api/path-parameters.adoc[]
+
+include::{snippets}/get-api/query-parameters.adoc[]
+
+include::{snippets}/get-api/http-request.adoc[]
+
+==== Response
+
+include::{snippets}/get-api/response-fields.adoc[]
+
+include::{snippets}/get-api/http-response.adoc[]

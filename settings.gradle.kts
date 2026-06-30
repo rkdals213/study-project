@@ -105,6 +105,9 @@ findProject(":module-web:test23-mybatis-type")?.name = "test23-mybatis-type"
 include("module-web:test25-discount-domain")
 findProject(":module-web:test25-discount-domain")?.name = "test25-discount-domain"
 
+include("module-web:test26-restdocs")
+findProject(":module-web:test26-restdocs")?.name = "test26-restdocs"
+
 include("module-database")
 include("module-database:jpa")
 findProject(":module-database-data:jpa")?.name = "jpa"
