@@ -27,13 +27,8 @@ tasks {
 
     asciidoctor {
         dependsOn(test)
-
-        sourceDir("src/docs/asciidoc")
-        sources {
-            include("index.adoc")
-        }
-
         inputs.dir(snippetsDir)
+
         configurations(asciidoctorExt.name)
         baseDirFollowsSourceFile()
 
@@ -47,10 +42,7 @@ tasks {
     val generateDocumentation by registering(Copy::class) {
         dependsOn(asciidoctor)
 
-        from(asciidoctor.map { it.outputDir }) {
-            include("index.html")
-        }
-
+        from(asciidoctor.map { it.outputDir })
         into(layout.projectDirectory.dir("src/main/resources/static/docs"))
 
         doFirst {
